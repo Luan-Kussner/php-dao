@@ -1,14 +1,11 @@
 <?php
 require_once("config.php");
-/*
-$sql = new Sql();
 
-$usuarios = $sql->select("SELECT * FROM udemy.usuario");
+//CARREGA UM USUARIO
+//$root = new Usuario();
+//$root->loadById(2);
+//echo $root;
 
-echo json_encode($usuarios); */
-
-$root = new Usuario();
-
-$root->loadById(2);
-
-echo $root;
+//CARREGA UMA LISTA
+$lista = Usuario::getList();
+echo json_encode($lista);
