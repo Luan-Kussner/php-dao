@@ -39,11 +39,7 @@ class Usuario {
 
         if (isset($results[0])) {
 
-            $row = $results[0];
-
-            $this->setIdusuario($row['idusuario']);
-            $this->setNome($row['nome']);
-            $this->setSobrenome($row['sobrenome']);
+            $this->setData($results [0]);
 
         }
     }
@@ -53,6 +49,28 @@ class Usuario {
         $sql = new Sql();
 
         return $sql->select("SELECT * FROM usuario;");
+    }
+
+    public function setData($data){
+
+        $this->setIdusuario($data['idusuario']);
+        $this->setNome($data['nome']);
+        $this->setSobrenome($data['sobrenome']);
+
+    }
+
+    public function insert(){
+
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_usuario_insert(:NOME, :SOBRENOME)", array(
+            ':NOME'=>$this->getNome(),
+            ':SOBRENOME'=>$this->getSobrenome()
+        ));
+
+        if(count($results) > 0){
+            $this->setData($results[0]);
+        }
     }
 
     public function __toString()

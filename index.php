@@ -7,5 +7,16 @@ require_once("config.php");
 //echo $root;
 
 //CARREGA UMA LISTA
-$lista = Usuario::getList();
-echo json_encode($lista);
+//$lista = Usuario::getList();
+//echo json_encode($lista);
+
+//inserir usuario novo
+
+$teste = new Usuario();
+
+$teste->setNome("Eduarda");
+$teste->setSobrenome("Kussner");
+
+$teste->insert();
+
+echo $teste;
