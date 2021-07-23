@@ -6,7 +6,7 @@ class Sql extends PDO {
 
     public function __construct(){
 
-        $this->conn = new PDO("mysql:host=localhost;dbname=agenda", "root", "root");
+        $this->conn = new PDO("mysql:host=localhost;dbname=udemy", "root", "root");
     }
     
     private function setParams($statment, $parameters = array()){
@@ -19,7 +19,7 @@ class Sql extends PDO {
 
     private function setParam($statment, $key, $value){
 
-            $statment->bindParam($statment,$key, $value);
+            $statment->bindParam($key, $value);
 
         }
 
@@ -27,6 +27,7 @@ class Sql extends PDO {
     public function query($rawQuery, $params = array()){
         
         $stmt = $this->conn->prepare($rawQuery);
+        
         $this->setParams($stmt, $params);
 
         $stmt->execute();
