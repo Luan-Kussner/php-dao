@@ -62,15 +62,31 @@ class Usuario {
     public function insert(){
 
         $sql = new Sql();
-
+    
         $results = $sql->select("CALL sp_usuario_insert(:NOME, :SOBRENOME)", array(
             ':NOME'=>$this->getNome(),
             ':SOBRENOME'=>$this->getSobrenome()
         ));
-
+       
         if(count($results) > 0){
             $this->setData($results[0]);
         }
+        return $results;
+    }
+
+    public function update($nome, $sobrenome){
+
+        $this->setNome($nome);
+        $this->setSobrenome($sobrenome);
+
+        $sql = new Sql();
+
+        $sql->query("UPDATE usuario SET nome = :NOME, sobrenome = :SOBRENOME WHERE idusuario = :ID", array(
+            ':NOME'=>$this->getNome(),
+            ':SOBRENOME'=>$this->getSobrenome(),
+            ':ID'=>$this->getIdusuario()
+        ));
+
     }
 
     public function __toString()

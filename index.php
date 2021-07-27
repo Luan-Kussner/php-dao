@@ -10,13 +10,16 @@ require_once("config.php");
 //$lista = Usuario::getList();
 //echo json_encode($lista);
 
-//inserir usuario novo
+//INSERIR UM NOVO USUARIO
+//$teste = new Usuario();
+//$teste->setNome("joao");
+//$teste->setSobrenome("Kussner");
+//$te=$teste->insert();
+//echo $te;
 
-$teste = new Usuario();
 
-$teste->setNome("Eduarda");
-$teste->setSobrenome("Kussner");
-
-$teste->insert();
-
-echo $teste;
+//EDITAR USUARIO
+//$usuario = new Usuario();
+//$usuario->loadById(4);
+//$usuario->update("luan", "Guilherme");
+//echo $usuario;
