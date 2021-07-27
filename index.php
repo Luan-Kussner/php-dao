@@ -18,8 +18,19 @@ require_once("config.php");
 //echo $te;
 
 
-//EDITAR USUARIO
+//ALTERAR USUARIO
 //$usuario = new Usuario();
 //$usuario->loadById(4);
 //$usuario->update("luan", "Guilherme");
 //echo $usuario;
+
+
+//DELETAR UM USUARIO
+
+$usuario = new Usuario();
+
+$usuario->loadById(19);
+
+$usuario->delete();
+
+echo $usuario;
